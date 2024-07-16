@@ -1,0 +1,24 @@
+#!/bin/bash                                                                                                                                       
+
+
+PROCESS_NAME="your_java_application.jar"
+
+# Check if the process is running
+if pgrep -f "$PROCESS_NAME" > /dev/null; then
+    echo "Stopping the existing process..."                       
+    
+    # Get the process ID and kill it
+    pkill -f "$PROCESS_NAME"
+    
+    # Wait for a moment to ensure the process is terminated
+    sleep 5
+    
+    echo "Process stopped."
+else
+    echo "No existing process found."
+fi
+
+# Start the Java application again using nohup
+nohup java -jar "$PROCESS_NAME" > app.log 2>&1 &
+
+echo "Java application restarted."
