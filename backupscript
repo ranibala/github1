@@ -1,0 +1,4 @@
+set PATH="C:\Program Files\PostgreSQL\9.5\bin"
+cd C:\Program Files\PostgreSQL\9.5\bin
+set PGPASSWORD=ifany
+pg_dump -h localhost -U spectra -Fc backup_name > destination path so save backup
