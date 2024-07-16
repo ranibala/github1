@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Define the paths to the JAR files
+JAR1_PATH="path"
+JAR2_PATH="path"
+
+# Function to stop a Java process
+stop_java_process() {
+    local jar_path="$1"
+    local process_name=$(basename "$jar_path")
+
+    if pgrep -f "$process_name" > /dev/null; then
+        echo "Stopping $process_name..."
+        pkill -f "$process_name"
+        sleep 5
+        echo "$process_name stopped."
+    else
+        echo "$process_name is not running."
+    fi
+}
+
+# Function to start a Java process
+start_java_process() {
+    local jar_path="$1"
+    local process_name=$(basename "$jar_path")
+
+    nohup java -jar "$jar_path" > "$process_name.log" 2>&1 &
+    echo "Started $process_name."
+}
+
+# Stop and start the JAR processes
+stop_java_process "$JAR1_PATH"
+stop_java_process "$JAR2_PATH"
+
+start_java_process "$JAR1_PATH"
+start_java_process "$JAR2_PATH"
