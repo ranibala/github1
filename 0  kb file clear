@@ -1,0 +1,13 @@
+#!/bin/bash
+
+directory="/opt/cbprd/wildfly-10.0.0.Final/bin"
+
+cd "$directory" || exit 1
+
+find . -type f -size 0 -delete
+
+echo "0 KB files deleted successfully."
+
+
+-------------------*********-----------------------------
+
