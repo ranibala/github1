@@ -1,0 +1,10 @@
+@echo off
+setlocal
+set "pattern=def pattern to delete"
+set "directory=path to file"
+set "days=2"
+pushd "%directory%" || exit /b 1
+forfiles /M %pattern%* /D -%days% /C "cmd /c echo Deleting file: @path && rmdir /Q /S @path"
+popd
+endlocal
+
