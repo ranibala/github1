@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Function to run JAR with nohup and save as nohup.out
+run_jar() {
+    local jar_path="$1"
+    local dir=$(dirname "$jar_path")
+    local jar_name=$(basename "$jar_path")
+    (cd "$dir" && nohup java -jar "$jar_name" > nohup.out 2>&1 &)
+}
+
+# Call the function for each JAR file
+#root@xxx:~# find  path -name "*.jar" | grep -v '/lib/'| sed 's|^./||'
+#run_jar  "jarpath"
+run_jar "jarpath" 
+run_jar "jarpath"
+
+you can add the jar path in this list 
