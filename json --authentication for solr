@@ -1,0 +1,23 @@
+{
+"authentication": {
+"blockUnknown": true,
+"class": "solr.BasicAuthPlugin",
+"credentials": {
+"solradmin": "password"
+},
+"realm": "My Solr users",
+"forwardCredentials": false
+},
+"authorization": {
+"class": "solr.RuleBasedAuthorizationPlugin",
+"permissions": [
+{
+"name": "solradmin",
+"role": "admin"
+}
+],
+"user-role": {
+"solradmin": "admin"
+}
+}
+}
